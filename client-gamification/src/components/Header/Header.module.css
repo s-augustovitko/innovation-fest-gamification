@@ -33,3 +33,9 @@
 .hamburger:hover {
     --hamburger-color: #fff;
 }
+
+.mainMenu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
