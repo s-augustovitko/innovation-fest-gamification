@@ -4,5 +4,6 @@
 **/coverage
 **/dist
 **/build
-**/*.env
+client-gamification/**/*.env
 **/.env
+**/bin
