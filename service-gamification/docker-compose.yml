@@ -1,0 +1,41 @@
+version: "3"
+
+networks:
+  local_network:
+    driver: bridge
+    name: local_network
+
+services:
+  mongodb:
+    image: mongo:6
+    container_name: mongodb
+    networks:
+      - local_network
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+
+  mongodb-seed:
+    image: mongo:6
+    container_name: mongodb-seed
+    networks:
+      - local_network
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    links:
+      - mongodb
+    volumes:
+      - ./mock_db_data/users.json:/tmp/users.json
+    entrypoint: ["/bin/sh", "-c"]
+    command: |
+      "
+        echo 'Adding mongo data'
+        mongoimport --host=mongodb --db=pluto-main --collection=users --type=json --file=/tmp/users.json --jsonArray
+        echo 'Successfully added mongo data'
+      "
