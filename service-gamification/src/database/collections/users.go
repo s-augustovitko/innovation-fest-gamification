@@ -11,21 +11,23 @@ import (
 )
 
 type UsersCollection interface {
-	GetUser(ctx context.Context, id string) (models.User, error)
+	GetUser(ctx context.Context) (models.User, error)
 }
 
 type users struct {
 	*mongo.Collection
+	userID string
 }
 
-func User(db database.Database, dbName string) UsersCollection {
+func User(db database.Database, dbName string, userID string) UsersCollection {
 	return &users{
-		db.Collection(dbName, "users"),
+		Collection: db.Collection(dbName, "users"),
+		userID:     userID,
 	}
 }
 
-func (c *users) GetUser(ctx context.Context, id string) (models.User, error) {
-	idPrimitive, err := primitive.ObjectIDFromHex(id)
+func (c *users) GetUser(ctx context.Context) (models.User, error) {
+	idPrimitive, err := primitive.ObjectIDFromHex(c.userID)
 	if err != nil {
 		return models.User{}, err
 	}

@@ -28,7 +28,7 @@ func main() {
 		panic(err)
 	}
 
-	usersCollection := collections.User(db, cfg.MongoDBDatabase)
+	usersCollection := collections.User(db, cfg.MongoDBDatabase, cfg.UserID)
 
 	api, err := api.New(usersCollection)
 	if err != nil {

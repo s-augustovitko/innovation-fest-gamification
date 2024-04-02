@@ -14,6 +14,7 @@ type Config struct {
 	APIPort         string
 	MongoDBURI      string
 	MongoDBDatabase string
+	UserID          string
 }
 
 func ReadFromEnv() (*Config, error) {
@@ -26,5 +27,6 @@ func ReadFromEnv() (*Config, error) {
 		APIPort:         os.Getenv("API_PORT"),
 		MongoDBURI:      os.Getenv("MONGODB_URI"),
 		MongoDBDatabase: os.Getenv("MONGODB_DATABASE"),
+		UserID:          os.Getenv("USER_ID"),
 	}, nil
 }

@@ -16,7 +16,7 @@ import (
 func GETBadges(usersCollection collections.UsersCollection) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		// TODO: example code, remove before actual implementation {
-		testUser, _ := usersCollection.GetUser(c.Request.Context(), "000000000000000000000001")
+		testUser, _ := usersCollection.GetUser(c.Request.Context())
 		log.Println(testUser)
 		// }
 		// TODO: actual implementation

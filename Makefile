@@ -16,3 +16,7 @@ build-api: api-deps
 
 run-api:
 	./service-gamification/bin/service
+
+docker_clear:
+	docker stop $$(docker ps -aq)
+	docker rm $$(docker ps -aq)
