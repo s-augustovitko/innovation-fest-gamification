@@ -9,33 +9,32 @@ The service is implemented as a Rest API using the [Gin](https://github.com/gin-
 
 ## Config
 
-Service config reads from env variables set on file: 
-```
-config.env
-```
+Service config reads from env variables set on files: 
+- config.env
+- config.docker.env
 
 ## Building and running
 
 ```
-make api
+make api-dev
 ```
 
 #### Infra only
 
 ```
-make infra-up
+make api-infra-up
 ```
 
 #### Building the API only
 
 ```
-make build-api
+make api-build
 ```
 
 #### Running only
 
 ```
-make run-api
+make api-run
 ```
 
 ## API docs (Swagger)

@@ -31,7 +31,7 @@ services:
     links:
       - mongodb
     volumes:
-      - ./mock_db_data/users.json:/tmp/users.json
+      - ./service-gamification/mock_db_data/users.json:/tmp/users.json
     entrypoint: ["/bin/sh", "-c"]
     command: |
       "
@@ -39,3 +39,24 @@ services:
         mongoimport --host=mongodb --db=pluto-main --collection=users --type=json --file=/tmp/users.json --jsonArray
         echo 'Successfully added mongo data'
       "
+
+  api:
+    image: innovation-fest-gamification-api:latest
+    container_name: api
+    ports:
+      - "8080:8080"
+    networks:
+      - local_network
+    links:
+      - mongodb
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      mongodb-seed:
+        condition: service_completed_successfully
+
+  frontend:
+    image: innovation-fest-gamification-frontend:latest
+    container_name: frontend
+    ports:
+      - "4173:4173"
