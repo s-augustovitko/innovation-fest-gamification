@@ -1,0 +1,28 @@
+.wrapper {
+    --active-color: #A8A8A8;
+    --text-color: #FFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 2rem;
+    padding: 6px 16px;
+    box-sizing: border-box;
+    color: var(--text-color);
+}
+
+.wrapper svg {
+    fill: var(--active-color);
+}
+
+.active {
+    --active-color: #FFF200;
+    border: 1.5px solid var(--active-color);
+}
+
+.active svg {
+    fill: var(--active-color);
+}
