@@ -19,3 +19,7 @@ type UserStatistics struct {
 	TimeWatchedMsPerChannel  map[string]int64 `json:"time_watched_ms_per_channel"`
 	TimeWatchedMsPerSeries   map[string]int64 `json:"time_watched_ms_per_series"`
 }
+
+type InputConfig struct {
+	UpdateTimeMs int64 `json:"update_time_ms"`
+}

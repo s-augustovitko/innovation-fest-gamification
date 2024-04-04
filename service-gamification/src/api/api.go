@@ -28,6 +28,7 @@ func New(usersCollection collections.UsersCollection, userEventsCollection colle
 	r.GET("/health", handlers.Health)
 	r.GET("/badges", handlers.GETBadges(userEventsCollection))
 	r.GET("/statistics", handlers.GETStatistics(userEventsCollection, baseLevelXP))
+	r.GET("/config", handlers.GETConfig(baseLevelXP))
 	// TODO: the other routes
 
 	return &api{
