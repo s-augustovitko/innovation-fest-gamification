@@ -1,14 +1,43 @@
-.progressBar {
-    width: 100%;
-    height: 5px;
-    background-color: #E5E5E5;
-    border-radius: 10px;
-    margin: 0.5rem 0;
+/*.progressBar {*/
+/*    width: 100%;*/
+/*    height: 5px;*/
+/*    background-color: #E5E5E5;*/
+/*    border-radius: 10px;*/
+/*    margin: 0.5rem 0;*/
+/*}*/
+
+/*.progress {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    border-radius: 10px;*/
+/*    background-color: #FFD700;*/
+/*}*/
+
+.wrapper {
+    position: relative;
 }
 
-.progress {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    background-color: #FFD700;
+.svg {
+    --progress-bar-stroke-width: 1.8;
+    --progress-bar-size: 55px;
+
+    height: var(--progress-bar-size);
+    transform: rotate(-90deg);
+    width: var(--progress-bar-size);
+}
+
+.svgBackground {
+    fill: none;
+    stroke: #FFF;
+    stroke-width: var(--progress-bar-stroke-width);
+}
+
+.svgProgress {
+    fill: none;
+    stroke: #FFD700;
+    stroke-dasharray: 100 100;
+    /*stroke-dashoffset: 100;*/
+    stroke-linecap: round;
+    stroke-width: var(--progress-bar-stroke-width);
+    transition: stroke-dashoffset .3s ease-out;
 }
