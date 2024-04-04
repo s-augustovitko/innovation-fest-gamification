@@ -34,6 +34,25 @@ const docTemplate = `{
                 }
             }
         },
+        "/config": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "GET Config",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.InputConfig"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/health": {
             "get": {
                 "produces": [
@@ -77,6 +96,14 @@ const docTemplate = `{
             "properties": {
                 "name": {
                     "type": "string"
+                }
+            }
+        },
+        "models.InputConfig": {
+            "type": "object",
+            "properties": {
+                "update_time_ms": {
+                    "type": "integer"
                 }
             }
         },
