@@ -1,6 +1,7 @@
 package api
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/s-augustovitko/innovation-fest-gamification/service-gamification/src/api/handlers"
 	"github.com/s-augustovitko/innovation-fest-gamification/service-gamification/src/database/collections"
@@ -19,6 +20,7 @@ type api struct {
 
 func New(usersCollection collections.UsersCollection, userEventsCollection collections.UserEventsCollection, baseLevelXP int) (API, error) {
 	r := gin.Default()
+	r.Use(cors.Default())
 
 	// Swagger docs
 	docs.SwaggerInfo.BasePath = ""

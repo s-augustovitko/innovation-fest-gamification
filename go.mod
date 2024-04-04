@@ -3,6 +3,7 @@ module github.com/s-augustovitko/innovation-fest-gamification
 go 1.22.1
 
 require (
+	github.com/gin-contrib/cors v1.7.1
 	github.com/gin-gonic/gin v1.9.1
 	github.com/joho/godotenv v1.5.1
 	github.com/swaggo/files v1.0.1
