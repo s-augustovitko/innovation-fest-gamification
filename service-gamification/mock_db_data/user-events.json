@@ -1,0 +1,19 @@
+[
+    {
+        "_id": { "$oid": "000000000000000000000001" },
+        "userId": { "$oid": "000000000000000000000002" },
+        "type": "live",
+        "timeWatchedMs": 180000,
+        "channel": "CBS",
+        "category": "News"
+    },
+    {
+        "_id": { "$oid": "000000000000000000000002" },
+        "userId": { "$oid": "000000000000000000000002" },
+        "type": "vod",
+        "timeWatchedMs": 600000,
+        "series": "South Park",
+        "episodeNumber": 11,
+        "category": "Comedy"
+    }
+]
