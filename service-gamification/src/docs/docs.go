@@ -86,7 +86,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/user_event": {
+        "/user_events": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -94,15 +94,18 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
-                "summary": "POST User Event",
+                "summary": "POST User Events",
                 "parameters": [
                     {
-                        "description": "User event data",
-                        "name": "user_event",
+                        "description": "User events data",
+                        "name": "user_events",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent"
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent"
+                            }
                         }
                     }
                 ],

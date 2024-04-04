@@ -12,7 +12,7 @@ import (
 
 type UserEventsCollection interface {
 	GetUserEvents(ctx context.Context) ([]models.UserEvent, error)
-	AddUserEvent(ctx context.Context, userEvent models.UserEvent) error
+	AddUserEvents(ctx context.Context, userEvents []models.UserEvent) error
 }
 
 type userEvents struct {
@@ -56,16 +56,22 @@ func (c *userEvents) GetUserEvents(ctx context.Context) ([]models.UserEvent, err
 	return userEvents, nil
 }
 
-func (c *userEvents) AddUserEvent(ctx context.Context, userEvent models.UserEvent) error {
+func (c *userEvents) AddUserEvents(ctx context.Context, userEvents []models.UserEvent) error {
 	idPrimitive, err := primitive.ObjectIDFromHex(c.userID)
 	if err != nil {
 		return err
 	}
 
-	userEvent.UserID = idPrimitive
-	userEvent.ID = primitive.NewObjectID()
+	documents := make([]interface{}, len(userEvents))
 
-	_, err = c.InsertOne(ctx, userEvent)
+	for i := range userEvents {
+		userEvents[i].ID = primitive.NewObjectID()
+		userEvents[i].UserID = idPrimitive
+
+		documents[i] = userEvents[i]
+	}
+
+	_, err = c.InsertMany(ctx, documents)
 	if err != nil {
 		return err
 	}

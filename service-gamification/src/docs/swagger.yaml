@@ -103,17 +103,19 @@ paths:
           schema:
             $ref: '#/definitions/models.UserStatistics'
       summary: GET Statistics
-  /user_event:
+  /user_events:
     post:
       consumes:
       - application/json
       parameters:
-      - description: User event data
+      - description: User events data
         in: body
-        name: user_event
+        name: user_events
         required: true
         schema:
-          $ref: '#/definitions/github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent'
+          items:
+            $ref: '#/definitions/github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent'
+          type: array
       produces:
       - application/json
       responses:
@@ -121,5 +123,5 @@ paths:
           description: Created
           schema:
             $ref: '#/definitions/models.UserStatistics'
-      summary: POST User Event
+      summary: POST User Events
 swagger: "2.0"

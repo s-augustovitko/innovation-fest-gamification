@@ -1,5 +1,9 @@
 package models
 
+import (
+	dbmodels "github.com/s-augustovitko/innovation-fest-gamification/service-gamification/src/database/models"
+)
+
 type Badge struct {
 	Name string `json:"name"`
 	// TODO
@@ -31,4 +35,21 @@ type UserEvent struct {
 	Series        string `json:"series"`
 	EpisodeNumber int64  `json:"episode_number"`
 	Category      string `json:"category"`
+}
+
+type UserEvents []UserEvent
+
+func (userEvents UserEvents) ToDatabaseModel() []dbmodels.UserEvent {
+	dbUserEvents := make([]dbmodels.UserEvent, len(userEvents))
+	for i, userEvent := range userEvents {
+		dbUserEvents[i] = dbmodels.UserEvent{
+			Type:          userEvent.Type,
+			TimeWatchedMs: userEvent.TimeWatchedMs,
+			Channel:       userEvent.Channel,
+			Series:        userEvent.Series,
+			EpisodeNumber: userEvent.EpisodeNumber,
+			Category:      userEvent.Category,
+		}
+	}
+	return dbUserEvents
 }
