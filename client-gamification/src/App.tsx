@@ -1,17 +1,21 @@
-import './App.css'
+import "./App.css";
 import Layout from "./components/Layout.tsx";
 import Header from "./components/Header/Header.tsx";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer.tsx";
-import {NotificationProvider} from "./components/Notification/NotificationContext.tsx";
+import { Provider } from "react-redux";
+import { NotificationProvider } from "./components/Notification/NotificationContext.tsx";
+import { store } from "./app/store.ts";
 
 function App() {
     return (
-      <NotificationProvider>
-        <Layout>
-          <Header/>
-          <VideoPlayer/>
-        </Layout>
-      </NotificationProvider>
+        <Provider store={store}>
+            <NotificationProvider>
+                <Layout>
+                    <Header />
+                    <VideoPlayer />
+                </Layout>
+            </NotificationProvider>
+        </Provider>
     )
 }
 

@@ -10,13 +10,13 @@ const UserMenu = () => {
 
     const widgetClasses = classes({
         [styles.effects]: true,
-        [styles.hide]: !!notification,
-    })
+        [styles.hide]: !!notification
+    });
 
     const notificationClasses = classes({
         [styles.effects]: true,
-        [styles.hide]: !notification,
-    })
+        [styles.hide]: !notification
+    });
 
     return (
         <div className={styles.container} onClick={() => showNotification({ duration: 3000, content: "Leveled UP" })}>
