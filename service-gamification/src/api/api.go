@@ -20,7 +20,13 @@ type api struct {
 
 func New(usersCollection collections.UsersCollection, userEventsCollection collections.UserEventsCollection, baseLevelXP int) (API, error) {
 	r := gin.Default()
-	r.Use(cors.Default())
+
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowCredentials = true
+	corsConfig.AllowOriginFunc = func(origin string) bool {
+		return true
+	}
+	r.Use(cors.New(corsConfig))
 
 	// Swagger docs
 	docs.SwaggerInfo.BasePath = ""
