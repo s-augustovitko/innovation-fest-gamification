@@ -50,6 +50,25 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/statistics": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "GET Statistics",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.UserStatistics"
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -58,6 +77,53 @@ const docTemplate = `{
             "properties": {
                 "name": {
                     "type": "string"
+                }
+            }
+        },
+        "models.UserStatistics": {
+            "type": "object",
+            "properties": {
+                "level": {
+                    "type": "integer"
+                },
+                "level_title": {
+                    "type": "string"
+                },
+                "next_level_title": {
+                    "type": "string"
+                },
+                "previous_level_title": {
+                    "type": "string"
+                },
+                "time_watched_ms_per_category": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "time_watched_ms_per_channel": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "time_watched_ms_per_series": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    }
+                },
+                "time_watched_ms_total": {
+                    "type": "integer"
+                },
+                "xp": {
+                    "type": "integer"
+                },
+                "xp_next_level": {
+                    "type": "integer"
+                },
+                "xp_previous_level": {
+                    "type": "integer"
                 }
             }
         }
