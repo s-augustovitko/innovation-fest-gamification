@@ -13,15 +13,13 @@ import (
 // @Summary GET Statistics
 // @Schemes
 // @Produce json
-// @Success 200 {array} models.UserStatistics
+// @Success 200 {object} models.UserStatistics
 // @Router /statistics [get]
 func GETStatistics(userEventsCollection collections.UserEventsCollection, baseLevelXP int) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		userStatistics, err := getUserStatistics(c.Request.Context(), userEventsCollection, baseLevelXP)
 		if err != nil {
-			c.JSON(http.StatusInternalServerError, gin.H{
-				"error": err,
-			})
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 			return
 		}
 

@@ -80,10 +80,40 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
+                            "$ref": "#/definitions/models.UserStatistics"
+                        }
+                    }
+                }
+            }
+        },
+        "/user_events": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "POST User Events",
+                "parameters": [
+                    {
+                        "description": "User events data",
+                        "name": "user_events",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.UserStatistics"
+                                "$ref": "#/definitions/github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent"
                             }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/models.UserStatistics"
                         }
                     }
                 }
@@ -91,6 +121,29 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent": {
+            "type": "object",
+            "properties": {
+                "category": {
+                    "type": "string"
+                },
+                "channel": {
+                    "type": "string"
+                },
+                "episode_number": {
+                    "type": "integer"
+                },
+                "series": {
+                    "type": "string"
+                },
+                "time_watched_ms": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
         "models.Badge": {
             "type": "object",
             "properties": {
