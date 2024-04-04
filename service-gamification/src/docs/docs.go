@@ -89,6 +89,12 @@ const docTemplate = `{
                 "level_title": {
                     "type": "string"
                 },
+                "next_level_title": {
+                    "type": "string"
+                },
+                "previous_level_title": {
+                    "type": "string"
+                },
                 "time_watched_ms_per_category": {
                     "type": "object",
                     "additionalProperties": {
