@@ -1,22 +1,7 @@
-import * as THREE from 'three'
 import {Float, useGLTF} from '@react-three/drei'
-import {GLTF} from 'three-stdlib'
-
-type GLTFResult = GLTF & {
-    nodes: {
-        Object_2: THREE.Mesh
-        Object_3: THREE.Mesh
-        Object_4: THREE.Mesh
-    }
-    materials: {
-        material_0: THREE.MeshBasicMaterial
-        lambert3SG: THREE.MeshBasicMaterial
-        lambert5SG: THREE.MeshBasicMaterial
-    }
-}
 
 const Badge3D = (props: JSX.IntrinsicElements['group']) => {
-    const {scene} = useGLTF('/sandwich/scene.gltf') as GLTFResult
+    const {scene} = useGLTF('/sandwich/scene.gltf')
 
     return (
         <group {...props} dispose={null}>
