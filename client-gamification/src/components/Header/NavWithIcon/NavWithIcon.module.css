@@ -2,6 +2,7 @@
     --active-color: #A8A8A8;
     --text-color: #FFF;
 
+    font-family: "PlutoSans", Verdana, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
