@@ -17,7 +17,7 @@ type api struct {
 	gin *gin.Engine
 }
 
-func New(usersCollection collections.UsersCollection) (API, error) {
+func New(usersCollection collections.UsersCollection, userEventsCollection collections.UserEventsCollection) (API, error) {
 	r := gin.Default()
 
 	// Swagger docs
@@ -26,7 +26,8 @@ func New(usersCollection collections.UsersCollection) (API, error) {
 
 	// Routes
 	r.GET("/health", handlers.Health)
-	r.GET("/badges", handlers.GETBadges(usersCollection))
+	r.GET("/badges", handlers.GETBadges(userEventsCollection))
+	r.GET("/statistics", handlers.GETStatistics(userEventsCollection))
 	// TODO: the other routes
 
 	return &api{
