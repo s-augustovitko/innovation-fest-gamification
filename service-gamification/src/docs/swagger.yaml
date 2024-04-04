@@ -1,4 +1,19 @@
 definitions:
+  github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent:
+    properties:
+      category:
+        type: string
+      channel:
+        type: string
+      episode_number:
+        type: integer
+      series:
+        type: string
+      time_watched_ms:
+        type: integer
+      type:
+        type: string
+    type: object
   models.Badge:
     properties:
       name:
@@ -86,8 +101,25 @@ paths:
         "200":
           description: OK
           schema:
-            items:
-              $ref: '#/definitions/models.UserStatistics'
-            type: array
+            $ref: '#/definitions/models.UserStatistics'
       summary: GET Statistics
+  /user_event:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: User event data
+        in: body
+        name: user_event
+        required: true
+        schema:
+          $ref: '#/definitions/github_com_s-augustovitko_innovation-fest-gamification_service-gamification_src_api_models.UserEvent'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.UserStatistics'
+      summary: POST User Event
 swagger: "2.0"

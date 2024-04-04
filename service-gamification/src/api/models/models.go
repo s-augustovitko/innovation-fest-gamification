@@ -23,3 +23,12 @@ type UserStatistics struct {
 type InputConfig struct {
 	UpdateTimeMs int64 `json:"update_time_ms"`
 }
+
+type UserEvent struct {
+	Type          string `json:"type"`
+	TimeWatchedMs int64  `json:"time_watched_ms"`
+	Channel       string `json:"channel"`
+	Series        string `json:"series"`
+	EpisodeNumber int64  `json:"episode_number"`
+	Category      string `json:"category"`
+}
