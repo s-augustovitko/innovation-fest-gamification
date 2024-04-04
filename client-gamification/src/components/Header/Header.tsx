@@ -1,11 +1,8 @@
-import logo from '/logo.svg';
-import styles from './Header.module.css';
+import logo from "/logo.svg";
+import styles from "./Header.module.css";
 import Button from "../Button/Button.tsx";
 import NavWithIcon from "./NavWithIcon/NavWithIcon.tsx";
 import UserMenu from "./UserMenu/UserMenu.tsx";
-import {Notification} from "../Notification/Notification.tsx";
-import {useContext} from "react";
-import {NotificationContext} from "../Notification/NotificationContext.tsx";
 
 const Hamburger = () => {
     return (
@@ -50,8 +47,6 @@ const MainMenu = () => {
 }
 
 const Header = () => {
-    const { showNotification } = useContext(NotificationContext);
-
     return (
         <header className={styles.header}>
             <div className={styles.headerLogo}>
@@ -59,10 +54,7 @@ const Header = () => {
                 <img src={logo} alt="logo" />
             </div>
             <MainMenu />
-            <div className={styles.headerRight} onClick={() => showNotification({ duration: 10000, content: "Leveled UP" })}>
-                <Notification />
-                <UserMenu />
-            </div>
+            <UserMenu />
         </header>
     );
 };
