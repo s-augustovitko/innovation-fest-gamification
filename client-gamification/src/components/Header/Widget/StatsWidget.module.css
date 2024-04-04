@@ -1,0 +1,19 @@
+.widget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.widget:hover {
+    cursor: pointer;
+}
+
+.metadata {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
