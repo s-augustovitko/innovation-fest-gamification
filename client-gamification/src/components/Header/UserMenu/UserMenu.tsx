@@ -1,10 +1,33 @@
-import styles from './UserMenu.module.css'
+import styles from "./UserMenu.module.css";
 import StatsWidget from "../Widget/StatsWidget.tsx";
+import { Notification } from "../../Notification/Notification.tsx";
+import { useContext } from "react";
+import { NotificationContext } from "../../Notification/NotificationContext.tsx";
+import { classes } from "../../utils.ts";
 
 const UserMenu = () => {
+    const { showNotification, notification } = useContext(NotificationContext);
+
+    const widgetClasses = classes({
+        [styles.effects]: true,
+        [styles.hide]: !!notification
+    });
+
+    const notificationClasses = classes({
+        [styles.effects]: true,
+        [styles.hide]: !notification
+    });
+
     return (
-        <div className={styles.container}>
-            <StatsWidget/>
+        <div className={styles.container} onClick={() => showNotification({ duration: 3000, content: "Leveled UP" })}>
+            <div className={styles.widgets}>
+                <div className={notificationClasses}>
+                    <Notification />
+                </div>
+                <div className={widgetClasses}>
+                    <StatsWidget />
+                </div>
+            </div>
             <div className={styles.avatar}>
                 <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                      className="profileIcon-0-2-182">
@@ -13,7 +36,7 @@ const UserMenu = () => {
                 </svg>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default UserMenu
+export default UserMenu;

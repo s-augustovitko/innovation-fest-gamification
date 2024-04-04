@@ -1,5 +1,5 @@
-import logo from '/logo.svg';
-import styles from './Header.module.css';
+import logo from "/logo.svg";
+import styles from "./Header.module.css";
 import Button from "../Button/Button.tsx";
 import NavWithIcon from "./NavWithIcon/NavWithIcon.tsx";
 import UserMenu from "./UserMenu/UserMenu.tsx";
@@ -50,13 +50,13 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.headerLogo}>
-                <Hamburger/>
-                <img src={logo} alt="logo"/>
+                <Hamburger />
+                <img src={logo} alt="logo" />
             </div>
-            <MainMenu/>
-            <UserMenu/>
+            <MainMenu />
+            <UserMenu />
         </header>
-    )
-}
+    );
+};
 
 export default Header

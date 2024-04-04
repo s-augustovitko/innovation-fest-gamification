@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.content {
+    transition: .3s;
+    display: flex;
+    gap: 1ch;
+    flex-wrap: nowrap;
+    background: #efefef;
+    color: #333;
+    border-radius: 5rem;
+    padding: .5rem 1rem;
+    opacity: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.contentActive {
+    transition: .3s;
+    opacity: 1;
+}

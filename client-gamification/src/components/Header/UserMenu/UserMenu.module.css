@@ -17,3 +17,22 @@
 .avatar svg {
     fill: #A8A8A8;
 }
+
+.effects {
+    transition: .5s;
+    opacity: 1;
+    position: absolute;
+}
+
+.hide {
+    opacity: 0;
+}
+
+.widgets {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    height: 64px;
+}
