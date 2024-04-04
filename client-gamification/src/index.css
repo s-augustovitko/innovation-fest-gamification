@@ -1,5 +1,15 @@
+/*
+custom font face for PlutoTV
+*/
+@font-face {
+    font-family: 'PlutoSans';
+    src: url('PlutoSans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
 :root {
-    font-family: Verdana, sans-serif;
+    font-family: "PlutoSans", Verdana, sans-serif;
     line-height: 1.5;
     font-weight: 400;
 

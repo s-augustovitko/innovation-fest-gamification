@@ -39,3 +39,7 @@ http://localhost:8080/
 
 After running the API locally, you can find the API docs here:
 http://localhost:8080/swagger/index.html
+
+## Client
+
+http://localhost:4173/
