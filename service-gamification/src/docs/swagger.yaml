@@ -4,6 +4,33 @@ definitions:
       name:
         type: string
     type: object
+  models.UserStatistics:
+    properties:
+      level:
+        type: integer
+      level_title:
+        type: string
+      time_watched_ms_per_category:
+        additionalProperties:
+          type: integer
+        type: object
+      time_watched_ms_per_channel:
+        additionalProperties:
+          type: integer
+        type: object
+      time_watched_ms_per_series:
+        additionalProperties:
+          type: integer
+        type: object
+      time_watched_ms_total:
+        type: integer
+      xp:
+        type: integer
+      xp_next_level:
+        type: integer
+      xp_previous_level:
+        type: integer
+    type: object
 info:
   contact: {}
 paths:
@@ -30,4 +57,16 @@ paths:
             additionalProperties: true
             type: object
       summary: Health check route
+  /statistics:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.UserStatistics'
+            type: array
+      summary: GET Statistics
 swagger: "2.0"

@@ -17,8 +17,3 @@ type UserEvent struct {
 	EpisodeNumber int64              `bson:"episodeNumber"`
 	Category      string             `bson:"category"`
 }
-
-type UserPopulated struct {
-	ID     primitive.ObjectID `bson:"_id"`
-	Events []UserEvent
-}
