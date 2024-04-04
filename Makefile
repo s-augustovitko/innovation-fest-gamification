@@ -8,7 +8,7 @@ api-deps:
 	go install github.com/swaggo/swag/cmd/swag@latest
 
 api-build: api-deps
-	cd ./service-gamification/src && swag init && cd -
+	cd ./service-gamification/src && $(shell go env var GOPATH)/bin/swag init && cd -
 	go build -gcflags="all=-N -l" -o ./service-gamification/bin/service ./service-gamification/src/.
 
 api-run:

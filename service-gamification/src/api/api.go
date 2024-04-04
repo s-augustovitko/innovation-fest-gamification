@@ -29,7 +29,7 @@ func New(usersCollection collections.UsersCollection, userEventsCollection colle
 	r.GET("/badges", handlers.GETBadges(userEventsCollection))
 	r.GET("/statistics", handlers.GETStatistics(userEventsCollection, baseLevelXP))
 	r.GET("/config", handlers.GETConfig(baseLevelXP))
-	// TODO: the other routes
+	r.POST("/user_events", handlers.POSTUserEvents(userEventsCollection, baseLevelXP))
 
 	return &api{
 		gin: r,
