@@ -4,6 +4,11 @@ definitions:
       name:
         type: string
     type: object
+  models.InputConfig:
+    properties:
+      update_time_ms:
+        type: integer
+    type: object
   models.UserStatistics:
     properties:
       level:
@@ -50,6 +55,18 @@ paths:
               $ref: '#/definitions/models.Badge'
             type: array
       summary: GET Badges
+  /config:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.InputConfig'
+            type: array
+      summary: GET Config
   /health:
     get:
       produces:
