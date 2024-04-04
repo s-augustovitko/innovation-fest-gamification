@@ -32,11 +32,13 @@ services:
       - mongodb
     volumes:
       - ./service-gamification/mock_db_data/users.json:/tmp/users.json
+      - ./service-gamification/mock_db_data/user-events.json:/tmp/user-events.json
     entrypoint: ["/bin/sh", "-c"]
     command: |
       "
         echo 'Adding mongo data'
         mongoimport --host=mongodb --db=pluto-main --collection=users --type=json --file=/tmp/users.json --jsonArray
+        mongoimport --host=mongodb --db=pluto-main --collection=user-events --type=json --file=/tmp/user-events.json --jsonArray
         echo 'Successfully added mongo data'
       "
 
