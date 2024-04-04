@@ -8,7 +8,9 @@ import useMockProgress from "./useMockProgress.ts";
 
 const StatsWidget = () => {
     // read title and progress from api
-    const title = 'Lvl. Foobar'
+    const level = 24
+    const title = 'Grand Master'
+    // progress is a number between 0 and 1
     const progress = useMockProgress()
 
     return (
@@ -24,8 +26,15 @@ const StatsWidget = () => {
                 </Suspense>
             </Canvas>
             <div className={styles.metadata}>
-                <div>{title}</div>
-                <ProgressBar value={progress} total={10}/>
+                <div className={styles.metaLeftContainer}>
+                    <span className={styles.levelLabel}>Level</span>
+                    <span className={styles.titleLabel}>{title}</span>
+                </div>
+                <div className={styles.progressContainer}>
+                    <ProgressBar value={progress}>
+                        <span className={styles.level}>{level}</span>
+                    </ProgressBar>
+                </div>
             </div>
         </div>
     )
