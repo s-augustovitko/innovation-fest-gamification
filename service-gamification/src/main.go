@@ -31,7 +31,7 @@ func main() {
 	usersCollection := collections.User(db, cfg.MongoDBDatabase, cfg.UserID)
 	userEventsCollection := collections.UserEvents(db, cfg.MongoDBDatabase, cfg.UserID)
 
-	api, err := api.New(usersCollection, userEventsCollection)
+	api, err := api.New(usersCollection, userEventsCollection, cfg.BaseLevelXP)
 	if err != nil {
 		panic(err)
 	}
