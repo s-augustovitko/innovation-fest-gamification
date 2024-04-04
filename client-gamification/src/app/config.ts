@@ -1,0 +1,1 @@
+export const apiBaseUrl = "https://service-mock.devtools.pluto.tv/innovation-fest-gamified";

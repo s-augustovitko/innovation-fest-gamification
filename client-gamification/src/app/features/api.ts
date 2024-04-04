@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ConfigType, StatisticsType } from "../../types.ts";
+import { apiBaseUrl } from "../config.ts";
 
 export const api = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl: "https://service-mock.devtools.pluto.tv/innovation-fest-gamified"
+        baseUrl: apiBaseUrl
     }),
     endpoints: (builder) => ({
         getHealth: builder.query({
