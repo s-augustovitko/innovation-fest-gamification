@@ -19,4 +19,5 @@ export type StatisticsType = {
     "time_watched_ms_per_series": {
         "South Park": number
     }
+    "badges": Array<{name: string, description: string}>
 }

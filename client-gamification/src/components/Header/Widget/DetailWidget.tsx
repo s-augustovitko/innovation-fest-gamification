@@ -22,20 +22,7 @@ const DetailWidget = (props: DetailWidgetProps) => {
         total: formatMs(categoriesDict[categoryMostWatched])
     };
 
-    const badges: { name: string; description: string }[] = [
-        {
-            name: "Power Player",
-            description: "Watch 100 hours of content"
-        },
-        {
-            name: "7 Streaks",
-            description: "Watch 7 days in a row"
-        },
-        {
-            name: "master chief",
-            description: "Watch 1000 hours of content"
-        }
-    ];
+    const badges = props.statistics?.badges ?? [];
 
     const twtMsg = `I have watched ${totalWatched} on Pluto.TV, Joins us\nIt's Free!!!`;
     const twtEncoded = encodeURI(twtMsg);
