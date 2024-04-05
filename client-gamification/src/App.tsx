@@ -13,6 +13,7 @@ function App() {
                 <Layout>
                     <Header />
                     <VideoPlayer />
+                    <img src="/footer.png" style={{width: "100%"}}/>
                 </Layout>
             </NotificationProvider>
         </Provider>
