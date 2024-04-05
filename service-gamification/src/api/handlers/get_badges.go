@@ -27,74 +27,72 @@ func GETBadges(userEventsCollection collections.UserEventsCollection) func(c *gi
 	}
 }
 
-func getBadges(ctx context.Context, userEventsCollection collections.UserEventsCollection) ([]models.Badge, error){
+func getBadges(ctx context.Context, userEventsCollection collections.UserEventsCollection) ([]models.Badge, error) {
 	badges := []models.Badge{}
 
-	hour := int64(3600000)
+	halfMinute := int64(30000)
 
-	//counters 
+	//counters
 	liveShowCount := 0
 	totalTimeWatched := int64(0)
 	var channels []string
-
 
 	events, err := userEventsCollection.GetUserEvents(ctx)
 	if err != nil {
 		return nil, err
 	}
 
-	for _, event := range events{
+	for _, event := range events {
 		if event.Type == "live" {
 			liveShowCount += 1
 		}
 
 		totalTimeWatched += event.TimeWatchedMs
 
-		if !CheckIfExistsStr(event.Channel, channels){
+		if event.Channel != "" && !CheckIfExistsStr(event.Channel, channels) {
 			channels = append(channels, event.Channel)
 		}
-		
 	}
 
 	if liveShowCount > 0 {
 		badge := models.Badge{
-			Name: "Live Show Novice", 
+			Name:        "Couch Potato",
 			Description: "Watched one Live event",
 		}
 
 		badges = append(badges, badge)
 	}
 
-	if totalTimeWatched > hour{
+	if totalTimeWatched > halfMinute {
 		badge := models.Badge{
-			Name: "Content Rookie", 
+			Name:        "Rookie",
 			Description: "Watched 1 hour of content",
 		}
 
 		badges = append(badges, badge)
 	}
 
-	if totalTimeWatched > (hour * 5) {
+	if totalTimeWatched > (halfMinute * 5) {
 		badge := models.Badge{
-			Name: "Content Genin", 
+			Name:        "Genin",
 			Description: "Watched 5 hours of content",
 		}
 
 		badges = append(badges, badge)
 	}
 
-	if totalTimeWatched > (hour * 24) {
+	if totalTimeWatched > (halfMinute * 24) {
 		badge := models.Badge{
-			Name: "Content Chunin", 
+			Name:        "Chunin",
 			Description: "Watched 24 hours of content",
 		}
 
 		badges = append(badges, badge)
 	}
 
-	if len(channels) > 1 {
+	if len(channels) >= 1 {
 		badge := models.Badge{
-			Name: "Content Explorer", 
+			Name:        "Explorer",
 			Description: "Watched content from more than 1 channel",
 		}
 
