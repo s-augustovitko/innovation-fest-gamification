@@ -1,0 +1,31 @@
+.wrapper {
+    transform-style: preserve-3d;
+}
+
+.container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(0deg, #262626 0%, #181818 100%);
+    border: 1px solid #2d2d2d;
+    width: 150px;
+    height: 120px;
+    flex-wrap: wrap;
+    transform-style: preserve-3d;
+}
+
+.container > * {
+    transform: translateZ(25px);
+}
+
+.containerWide {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: .5rem;
+    padding: 1rem;
+    align-items: flex-start;
+    width: 100%;
+}
