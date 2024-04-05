@@ -166,6 +166,12 @@ const docTemplate = `{
         "models.UserStatistics": {
             "type": "object",
             "properties": {
+                "badges": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.Badge"
+                    }
+                },
                 "level": {
                     "type": "integer"
                 },
