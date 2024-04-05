@@ -5,8 +5,8 @@ import (
 )
 
 type Badge struct {
-	Name string `json:"name"`
-	// TODO
+	Name        string `json:"name"`
+	Description string `json:"description"`
 }
 
 type UserStatistics struct {
