@@ -1,0 +1,23 @@
+.popover {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    text-wrap: nowrap;
+    background-color: #FFF200;
+    color: #000;
+    padding: .2rem .5rem;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.popover:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border: 5px solid transparent;
+    border-top-color: #FFF200;
+}
