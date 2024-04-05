@@ -69,9 +69,7 @@ paths:
           description: OK
           schema:
             items:
-              items:
-                $ref: '#/definitions/models.Badge'
-              type: array
+              $ref: '#/definitions/models.Badge'
             type: array
       summary: GET Badges
   /config:

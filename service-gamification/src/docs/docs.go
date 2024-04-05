@@ -27,10 +27,7 @@ const docTemplate = `{
                         "schema": {
                             "type": "array",
                             "items": {
-                                "type": "array",
-                                "items": {
-                                    "$ref": "#/definitions/models.Badge"
-                                }
+                                "$ref": "#/definitions/models.Badge"
                             }
                         }
                     }

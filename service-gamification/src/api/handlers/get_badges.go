@@ -13,7 +13,7 @@ import (
 // @Summary GET Badges
 // @Schemes
 // @Produce json
-// @Success 200 {array} []models.Badge
+// @Success 200 {array} models.Badge
 // @Router /badges [get]
 func GETBadges(userEventsCollection collections.UserEventsCollection) func(c *gin.Context) {
 	return func(c *gin.Context) {
