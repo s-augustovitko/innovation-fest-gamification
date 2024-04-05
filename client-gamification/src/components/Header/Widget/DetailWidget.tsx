@@ -12,7 +12,20 @@ const DetailWidget = () => {
         name: 'Movie',
         count: 500
     }
-    let badges = ['Power Player', '7 Streaks', 'master chief']
+    let badges = [
+        {
+            name: 'Power Player',
+            description: 'Watch 100 hours of content'
+        },
+        {
+            name: '7 Streaks',
+            description: 'Watch 7 days in a row'
+        },
+        {
+            name: 'master chief',
+            description: 'Watch 1000 hours of content'
+        }
+    ]
 
     return (
         <motion.div className={styles.container}
@@ -44,7 +57,8 @@ const DetailWidget = () => {
                 </MetaBox>
                 <div style={{gridColumn: 'span 3'}}>
                     <MetaBox wide>
-                        {badges.map((badge, index) => (<Badge badge={badge} key={index}/>))}
+                        {badges.map((badge, index) => (
+                            <Badge name={badge.name} description={badge.description} key={index}/>))}
                     </MetaBox>
                 </div>
             </div>
