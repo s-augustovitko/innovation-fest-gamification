@@ -11,9 +11,36 @@
 
 .metadata {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
+    gap: .5rem;
+}
+
+.metaLeftContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.levelLabel {
+    font-size: 24px;
     font-weight: 600;
+}
+
+.titleLabel {
+    text-wrap: nowrap;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.progressContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.level {
+    top: 45%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
 }
