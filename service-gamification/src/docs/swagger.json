@@ -16,7 +16,10 @@
                         "schema": {
                             "type": "array",
                             "items": {
-                                "$ref": "#/definitions/models.Badge"
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/definitions/models.Badge"
+                                }
                             }
                         }
                     }
@@ -136,6 +139,9 @@
         "models.Badge": {
             "type": "object",
             "properties": {
+                "description": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string"
                 }
