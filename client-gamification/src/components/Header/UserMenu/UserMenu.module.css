@@ -14,10 +14,6 @@
     cursor: pointer;
 }
 
-.avatar svg {
-    fill: #A8A8A8;
-}
-
 .effects {
     transition: .5s;
     opacity: 1;

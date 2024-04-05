@@ -1,18 +1,13 @@
 import styles from "./StatsWidget.module.css";
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 import { Environment, PresentationControls } from "@react-three/drei";
 import Badge3D from "../../Icon/Badge3D.tsx";
 import ProgressBar from "./ProgressBar.tsx";
-import DetailWidget from "./DetailWidget.tsx";
 
 const StatsWidget = (props: {level: number, progress: number, title: string}) => {
-    const [hover, setHover] = useState(false)
-
     return (
-        <div className={styles.widget}
-             onPointerEnter={() => setHover(true)}
-             onPointerLeave={() => setHover(false)}>
+        <div className={styles.widget}>
             <Canvas style={{width: '80px', height: '64px'}}>
                 <Environment preset={'lobby'}/>
                 <Suspense fallback={null}>
@@ -34,8 +29,6 @@ const StatsWidget = (props: {level: number, progress: number, title: string}) =>
                     </ProgressBar>
                 </div>
             </div>
-
-            {hover && (<DetailWidget/>)}
         </div>
     )
 }

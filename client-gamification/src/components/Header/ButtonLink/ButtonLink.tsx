@@ -1,8 +1,6 @@
 import styles from "./ButtonLink.module.css";
 
-export function ButtonLink(props: { href: string, children: string }) {
-
-
+export function ButtonLink(props: React.PropsWithChildren<{ href: string }>) {
     return (
         <a className={styles.link} href={props.href} target="_blank">
             <svg fill="#fff" height="1rem" width="1rem" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
