@@ -1,0 +1,12 @@
+.link {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+    padding: .75rem 1rem;
+    background: #222;
+    border: 2px solid #fff200;
+    border-radius: 10rem;
+    gap: 1ch;
+    text-decoration: none;
+}

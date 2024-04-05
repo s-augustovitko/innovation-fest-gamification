@@ -1,12 +1,15 @@
 import styles from "./UserMenu.module.css";
+import { useContext, useEffect, useRef } from "react";
 import StatsWidget from "../Widget/StatsWidget.tsx";
-import { Notification } from "../../Notification/Notification.tsx";
-import { useContext } from "react";
-import { NotificationContext } from "../../Notification/NotificationContext.tsx";
 import { classes } from "../../utils.ts";
+import { NotificationContext } from "../../Notification/NotificationContext.tsx";
+import { Notification } from "../../Notification/Notification.tsx";
+import { useGetStatisticsQuery } from "../../../app/features/api.ts";
 
 const UserMenu = () => {
+    const { data } = useGetStatisticsQuery();
     const { showNotification, notification } = useContext(NotificationContext);
+    const notificationsReadyRef = useRef(false);
 
     const widgetClasses = classes({
         [styles.effects]: true,
@@ -18,14 +21,37 @@ const UserMenu = () => {
         [styles.hide]: !notification
     });
 
+    // const tweetMessage = encodeURI("[[Name]] just reached a new level!!! Join him at Pluto Tv, It's Free!\n\n[[Show Link]]");
+
+    const previousLevel = data?.xp_previous_level ?? 0;
+    const currentXp = data?.xp ?? 0;
+    const nextLevel = data?.xp_next_level ?? 0;
+
+    const total = nextLevel - previousLevel;
+    const current = currentXp - previousLevel;
+    const progress = current / total;
+
+    useEffect(() => {
+        if (notificationsReadyRef.current) {
+            showNotification({ duration: 4000, content: "Leveled UP" });
+        }
+
+        if (data?.level) {
+            notificationsReadyRef.current = true;
+        }
+    }, [data?.level]);
+
     return (
-        <div className={styles.container} onClick={() => showNotification({ duration: 3000, content: "Leveled UP" })}>
+        <div className={styles.container}>
             <div className={styles.widgets}>
+                {/*<ButtonLink href={"https://twitter.com/intent/tweet?text=" + tweetMessage}>*/}
+                {/*    Share*/}
+                {/*</ButtonLink>*/}
                 <div className={notificationClasses}>
                     <Notification />
                 </div>
                 <div className={widgetClasses}>
-                    <StatsWidget />
+                    <StatsWidget level={data?.level ?? 0} progress={progress} title={data?.level_title ?? "Loading..."} />
                 </div>
             </div>
             <div className={styles.avatar}>
