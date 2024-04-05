@@ -5,9 +5,9 @@ import { sendBeacon } from "./send-beacon.ts";
 const mockedEvents = [
     {
         "type": "live",
-        "time_watched_ms": 180000,
-        "channel": "CBS",
-        "category": "News"
+        "time_watched_ms": 2000,
+        "channel": "Nickelodeon",
+        "category": "Cartoon"
     },
 ]
 

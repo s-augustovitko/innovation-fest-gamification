@@ -11,9 +11,6 @@ export const api = createApi({
         getHealth: builder.query({
             query: () => "/health"
         }),
-        getBadges: builder.query({
-            query: () => "/badges"
-        }),
         getStatistics: builder.query<StatisticsType, void>({
             query: () => "/statistics"
         }),
@@ -23,4 +20,4 @@ export const api = createApi({
     })
 });
 
-export const { useGetHealthQuery, useGetBadgesQuery, useGetStatisticsQuery, useGetConfigQuery } = api;
+export const { useGetHealthQuery, useGetStatisticsQuery, useGetConfigQuery } = api;

@@ -58,3 +58,8 @@
     text-wrap: nowrap;
     text-transform: uppercase;
 }
+
+.footer {
+    display: flex;
+    justify-content: center;
+}
