@@ -80,6 +80,11 @@ func getUserStatistics(ctx context.Context, userEventsCollection collections.Use
 	}
 	userStatistics.NextLevelTitle = levelTitle(userStatistics.Level + 1)
 
+	userStatistics.Badges, err = getBadges(ctx, userEventsCollection)
+	if err != nil {
+		return models.UserStatistics{}, err
+	}
+
 	return userStatistics, nil
 }
 

@@ -22,6 +22,8 @@ type UserStatistics struct {
 	TimeWatchedMsPerCategory map[string]int64 `json:"time_watched_ms_per_category"`
 	TimeWatchedMsPerChannel  map[string]int64 `json:"time_watched_ms_per_channel"`
 	TimeWatchedMsPerSeries   map[string]int64 `json:"time_watched_ms_per_series"`
+
+	Badges []Badge `json:"badges"`
 }
 
 type InputConfig struct {
