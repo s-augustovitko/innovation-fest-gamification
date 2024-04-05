@@ -25,7 +25,7 @@ const Badge3D = ({ model }: Badge3DProps) => {
         setShouldRender(false);
         setTimeout(() => {
             setShouldRender(true);
-        });
+        }, 25);
     }, [model]);
 
     return (
