@@ -1,10 +1,11 @@
 import styles from "./StatsWidget.module.css";
 import {Canvas} from "@react-three/fiber";
-import {Suspense} from "react";
+import {Suspense, useState} from "react";
 import {Environment, PresentationControls} from "@react-three/drei";
 import Badge3D from "../../Icon/Badge3D.tsx";
 import ProgressBar from "./ProgressBar.tsx";
 import useMockProgress from "./useMockProgress.ts";
+import DetailWidget from "./DetailWidget.tsx";
 
 const StatsWidget = () => {
     // read title and progress from api
@@ -12,9 +13,12 @@ const StatsWidget = () => {
     const title = 'Grand Master'
     // progress is a number between 0 and 1
     const progress = useMockProgress()
+    const [hover, setHover] = useState(false)
 
     return (
-        <div className={styles.widget}>
+        <div className={styles.widget}
+             onPointerEnter={() => setHover(true)}
+             onPointerLeave={() => setHover(false)}>
             <Canvas style={{width: '80px', height: '64px'}}>
                 <Environment preset={'lobby'}/>
                 <Suspense fallback={null}>
@@ -36,6 +40,8 @@ const StatsWidget = () => {
                     </ProgressBar>
                 </div>
             </div>
+
+            {hover && (<DetailWidget/>)}
         </div>
     )
 }
