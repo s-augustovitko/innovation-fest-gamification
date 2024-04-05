@@ -147,6 +147,9 @@ const docTemplate = `{
         "models.Badge": {
             "type": "object",
             "properties": {
+                "description": {
+                    "type": "string"
+                },
                 "name": {
                     "type": "string"
                 }
